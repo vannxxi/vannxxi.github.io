@@ -1,0 +1,202 @@
+/* General Reset */
+body, h1, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Body Styling */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+    color: #f8f9fa;
+}
+
+/* Background Effects */
+body::before {
+    content: "";
+    position: absolute;
+    background: url(./images/mountin.png);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    opacity: 0.3;
+    background-position: center center;
+    z-index: -1;
+}
+
+body::after {
+    content: "";
+    position: absolute;
+    background: url(./images/snow.png);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center center;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+/* Header Styling */
+header {
+    text-align: center;
+    width: 100%;
+    padding: 20px 0;
+    background: #1d2671;
+    color: #ffcc29;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    font-family: "Bebas Neue", sans-serif;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Container Styling */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 20px;
+}
+
+/* Card Styling */
+.img {
+    position: relative;
+    flex: 1 1 calc(33.333% - 20px); /* Three cards per row */
+    max-width: 300px;
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    justify-content: space-between; /* Space between name and description */
+    align-items: center;
+    border: 2px solid #8b9da9;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    background-color: transparent; /* Transparent background */
+    transition: transform 0.3s, box-shadow 0.3s;
+    padding: 10px;
+}
+
+/* Images inside Cards */
+.img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 15px;
+}
+
+/* Image Text Styling */
+.img span {
+    position: relative;
+    z-index: 2; /* Ensure name text stays above description */
+    background: rgba(0, 0, 0, 0.5);
+    color: #ffcc29;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* Description Card Styling (initially hidden) */
+.description-card {
+    position: relative; /* Positioned within the flow of the card */
+    top: 10px; /* Position below the name */
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
+    color: black; /* Set font color to black */
+    border-radius: 10px;
+    text-align: center;
+    font-size: 0.9rem;
+    font-family: "Roboto", sans-serif;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    opacity: 0; /* Hidden initially */
+    transform: translateY(-20px); /* Slightly above the visible position */
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+/* Active Description (visible when card is clicked) */
+.img.active .description-card {
+    opacity: 1; /* Make it visible */
+    transform: translateY(0); /* Bring it into place */
+}
+
+/* Hover Effects */
+.img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(255, 204, 41, 0.8);
+}
+
+/* Image Hover Effects */
+.img:hover span {
+    bottom: 20px; /* Moves text up when hovering */
+}
+
+/* Description Card Styling for When the Card is Active */
+.img.active .description-card {
+    opacity: 1;
+    transform: translateY(0);
+    z-index: 2;
+}
+
+/* Responsive Design */
+
+/* Mobile Devices (319px - 480px) */
+@media only screen and (min-width: 319px) and (max-width: 480px) {
+    .img {
+        flex: 1 1 100%; /* 1 card per row */
+        max-width: 100%;
+        padding: 5px;
+    }
+}
+
+/* iPads and Tablets (481px - 1200px) */
+@media only screen and (min-width: 481px) and (max-width: 1200px) {
+    .img {
+        flex: 1 1 45%; /* 2 cards per row */
+        max-width: 45%;
+    }
+}
+
+/* Laptops (1201px - 1600px) */
+@media only screen and (min-width: 1201px) and (max-width: 1600px) {
+    .img {
+        flex: 1 1 30%; /* 3 cards per row */
+        max-width: 30%;
+    }
+}
+
+/* Desktops (1601px and more) */
+@media only screen and (min-width: 1601px) {
+    .img {
+        flex: 1 1 20%; /* 5 cards per row */
+        max-width: 20%;
+    }
+}
+.lower-right {
+    text-align: right; /* Aligns text to the right */
+    margin-top: 50px; /* Adds some space from content above */
+    margin-right: 20px; /* Pushes the text a bit inward from the edge */
+    font-family: Arial, sans-serif; /* Font style */
+    font-size: 14px; /* Font size */
+    color: #000; /* Text color */
+}
